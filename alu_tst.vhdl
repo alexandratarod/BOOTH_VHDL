@@ -18,12 +18,15 @@ BEGIN
 	op1_s <= x"00" AFTER 0 ns,
 	         x"01" AFTER 50 ns, 
 	         x"04" AFTER 100 ns, 
-	         x"01" AFTER 150 ns;
+	         x"01" AFTER 150 ns,
+	         x"03" AFTER 200 ns;
 	         
 	op2_s <= x"00" AFTER 0 ns, 
 	         x"03" AFTER 50 ns, 
 	         x"02" AFTER 100 ns, 
-	         x"04" AFTER 150 ns;
+	         x"04" AFTER 150 ns,
+	         x"05" AFTER 200 ns;
+	           
 	           
 	cin_s <= '0' AFTER 0 ns, 
 	         '0' AFTER 50 ns, 

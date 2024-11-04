@@ -10,11 +10,13 @@ ARCHITECTURE control_unit_architecture OF control_unit IS
 
 BEGIN
   
-proc_clock: PROCESS(clk)
+proc_clock: PROCESS(clk, rst)
 BEGIN
-	IF clk='1' AND clk'EVENT THEN
-		present_state <= next_state;
-	END IF;
+    IF rst = '0' THEN 
+        present_state <= S0;
+    ELSIF clk = '1' AND clk'EVENT THEN
+        present_state <= next_state;
+    END IF;
 END PROCESS proc_clock;
 
 avansare_stare: PROCESS (present_state, bgn, q_0, q_m1) 
@@ -72,7 +74,7 @@ BEGIN
           next_state <= S7;
         end if;
 
-      when S7 => --OUTBUS = A; Q[0]=0
+      when S7 => --OUTBUS = A
         c4 <= '0' after tp;
         c5 <= '1' after tp;
         next_state <= S8;

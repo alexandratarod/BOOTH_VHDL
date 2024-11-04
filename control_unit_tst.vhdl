@@ -28,9 +28,9 @@ BEGIN
 
  
   rst_s <= '0', '1' AFTER 10 ns;
-  bgn_s <= '1' AFTER 20 ns;
-  q_0_s <= '0', '1' AFTER 2800 ns;
-  q_m1_s <= '1', '0' AFTER 2855 ns;
+  bgn_s <= '1' AFTER 20 ns, '0' AFTER 100 ns, '1' AFTER 2700 ns, '0' AFTER 2800 ns;
+  q_0_s <= '0', '1' AFTER 2700 ns;
+  q_m1_s <= '1', '0' AFTER 2700 ns;
   
   
 

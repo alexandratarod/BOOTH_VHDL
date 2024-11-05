@@ -1,3 +1,4 @@
+
 ENTITY shift_register_a_q_tst IS	
 	generic( n: integer:=8);
 END shift_register_a_q_tst;
@@ -6,18 +7,18 @@ ARCHITECTURE t OF shift_register_a_q_tst IS
   COMPONENT shift_register_a_q IS
   generic(tp: time := 5 ns; n: integer := 8);
   port(
-      data_in: in bit_vector(n-1 downto 0);
+      data_in_a, data_in_q: in bit_vector(n-1 downto 0);
       load_a, load_q, shift, clk, rst: in bit;                  
       data_out: out bit_vector(2*n downto 0) 
   );
   END COMPONENT;
-  signal data_in_s: bit_vector(7 downto 0);
+  signal data_in_a_s, data_in_q_s: bit_vector(7 downto 0);
   signal data_out_s: bit_vector(16 downto 0);
   signal load_a_s, load_q_s, shift_s, clk_s, rst_s: bit;
   
 BEGIN
   
-  eticheta1: shift_register_a_q  PORT MAP ( data_in => data_in_s, load_a => load_a_s, load_q => load_q_s, shift => shift_s, clk => clk_s, rst => rst_s, data_out => data_out_s);
+  eticheta1: shift_register_a_q  PORT MAP ( data_in_a => data_in_a_s, data_in_q => data_in_q_s, load_a => load_a_s, load_q => load_q_s, shift => shift_s, clk => clk_s, rst => rst_s, data_out => data_out_s);
 	
 	PROCESS
   BEGIN
@@ -32,11 +33,14 @@ BEGIN
 
   
                
-  data_in_s <= "00000001" AFTER 0 ns, 
+  data_in_a_s <= "00000001" AFTER 0 ns, 
                "00000001" AFTER 25 ns, 
                "00000100" AFTER 300 ns, 
-               "11110111" AFTER 400 ns;
-               
+               "00000111" AFTER 400 ns;
+  data_in_q_s <= "00000001" AFTER 0 ns, 
+               "00000010" AFTER 25 ns, 
+               "00000101" AFTER 300 ns, 
+               "00001000" AFTER 400 ns;
 
   load_q_s <= '0' AFTER 0 ns, 
             '1' AFTER 50 ns,

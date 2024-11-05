@@ -68,9 +68,9 @@ BEGIN
         c2 <= '0' after tp;
         c3 <= '0' after tp;
         count:=count+1;
-        if count < 7 then
+        if count < 8 then
           next_state <= S3;
-        elsif count = 7 then
+        elsif count = 8 then
           next_state <= S7;
         end if;
 

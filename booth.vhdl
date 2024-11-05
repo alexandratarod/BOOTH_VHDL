@@ -48,8 +48,8 @@ ARCHITECTURE booth_architecture OF booth IS
 BEGIN
   
   alu_label: alu PORT MAP (
-            op1 => m_reg_data,
-            op2 => a_q_reg_data(2*n downto n+1),
+            op1 => a_q_reg_data(2*n downto n+1),
+            op2 => m_reg_data,
             cin => c3_s,
             result => alu_result);
 

@@ -35,15 +35,15 @@ BEGIN
   PROCESS
   BEGIN
     clk_s <= '0'; 
-    wait for 50 ns;
+    wait for 100 ns;
     clk_s <= '1'; 
-    wait for 50 ns;
+    wait for 100 ns;
   END PROCESS;
 
 
-  rst_s <= '0', '1' AFTER 50 ns;
-  inbus <= "01000101", "11010011" AFTER 150 ns;
-  bgn_s <='1';
+  rst_s <= '0', '1' AFTER 25 ns, '0' AFTER 5500 ns, '1' AFTER 5525 ns, '0' AFTER 10300 ns, '1' AFTER 10325 ns;
+  inbus <= "01000101" AFTER 125 ns, "11010011" AFTER 325 ns, "00000011" AFTER 5720 ns, "00000010" AFTER 5925 ns, "00100101" AFTER 10500 ns, "11010011" AFTER 10725 ns;
+  bgn_s <='1', '0' AFTER 10725 ns;
     
 
 END testbench;
